@@ -1,0 +1,32 @@
+<!--pages/list/list.wxml--> 
+<wxs module="filter" src="../../utils/countdown.wxs"></wxs>
+<view class='h1nav'>{{title}}</view>
+<view class='hierarchy2'>
+<!-- 章节练习 -->
+  <view class='h2nav' bindtap='goStart' wx:for="{{chapterList}}" wx:key="{{index}}" data-id='{{item.id}}' data-name='{{item.chapter_name}}' wx:if="{{listType == '1'}}">
+    <view class='h2T1'><view class='h2icon'></view>{{item.chapter_name}}</view>
+    <view class='h2T2'><text class='iconbox i1'>正确率：{{filter.parseFloattwo(item.correct_number/(item.completed_number == "0" ? "1" : item.completed_number) * 100)}}%</text><text class='iconbox i2'>已答题：{{item.completed_number}}/{{item.count}}</text></view>
+  </view>
+<!-- 历年真题 -->
+  <view class='h2nav' bindtap='goStart' wx:for="{{oldPaperList}}" wx:key="{{index}}" data-id='{{item.id}}' data-name='{{item.paper_name}}' data-remark='{{item.remark}}' data-count='{{item.question_number}}' wx:if="{{listType == '2'}}">
+    <view class='h2T1'><view class='h2icon'></view>{{item.paper_name}}</view>
+    <view class='h2T2'><text class='iconbox i1'>正确率：{{filter.parseFloattwo(item.correct_number/(item.question_number == "0" ? "1" : item.question_number) * 100)}}%</text><text class='iconbox i2'>已答题：{{item.completed_number}}/{{item.question_number}}</text></view>
+  </view>
+  <!-- 模拟考试 -->
+  <view class='h2nav' bindtap='goStart' wx:for="{{testPaperList}}" wx:key="{{index}}" data-id='{{item.id}}' data-name='{{item.paper_name}}' data-remark='{{item.remark}}' data-count='{{item.question_number}}' wx:if="{{listType == '3'}}">
+    <view class='h2T1'><view class='h2icon'></view>{{item.paper_name}}</view>
+    <view class='h2T2'><text class='iconbox i1'>正确率：{{filter.parseFloattwo(item.correct_number/(item.question_number == "0" ? "1" : item.question_number) * 100)}}%</text><text class='iconbox i2'>已答题：{{item.completed_number}}/{{item.question_number}}</text></view>
+  </view>
+  <!-- <view class='h2nav' bindtap='goStart'>
+    <view class='h2T1'><view class='h2icon'></view>2015年广东教师资格证教育模拟考试（1）</view>
+    <view class='h2T2'><text class='iconbox i1'>正确率：60%</text><text class='iconbox i2'>已答题：0/400</text></view>
+  </view> -->
+</view>
+<view class='startingwork' wx:if="{{isshowbox}}">
+  <view class='shadowbox' bindtap='cancalFun'></view>
+  <view class='workmain'>
+    <view class='wT1'>{{selectPaper.name}}</view>
+    <view class='wT2'>{{selectPaper.remark}}</view>
+    <view class='startbtn' bindtap='urlExercises'>开始答卷</view>
+  </view>
+</view>

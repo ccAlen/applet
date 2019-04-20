@@ -1,0 +1,13 @@
+var filter = {
+  parseFloattwo: function (e,str) {
+    var _str = str ? str : 1;
+    return parseFloat(e).toFixed(_str)
+  },
+  // parseIntfun: function (e) {
+  //   return parseInt(e)
+  // }
+}
+module.exports = {
+  parseFloattwo: filter.parseFloattwo,
+  // parseIntfun: filter.parseIntfun
+}

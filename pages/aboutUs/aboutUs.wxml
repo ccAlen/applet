@@ -1,0 +1,24 @@
+<!--pages/aboutUs/aboutUs.wxml-->
+<view wx:if="{{aboutus.type == '1'}}">
+  <htmltowxml json="{{aboutus.contents}}" bindWxmlTagATap="wxmlTagATap"></htmltowxml>
+  <!-- <image src='../img/aboutBanner.jpg' mode='aspectFill' class='banimg'></image>
+  <view class='maintext'>大学生在四年的大学生涯里，常常迷惘于因何而学、考什么证对自己有帮助、考了之后有什么用、社会上相应的岗位需求如何、未来将要从事什么职业才更适合自己等一系列问题。
+
+  面对这些困惑，星航教育从“考证”的角度切入，研发了微信小程序“猩考证”，通过引导学生们对考证规划的思考，从而引发他们对学习、就业等一系列问题的思考和规划，帮助他们在考证、升学、就业等重大抉择面前提供辅助判断。
+
+  “猩考证”致力于一站式地为大学生解决考证上的难题，用户通过输入就读专业、意向就业岗位，获取依据大数据分析提供的考证建议，并可立即全方位了解对应证书的相关考证信息。“猩考证”亦提供备考系列服务，帮助用户快速成长，成功考取各类职业资格证书。</view> -->
+  <view class='aboutFooter'>
+    <view class='afLeft'>
+      <image src='../img/code.jpg' mode='aspectFill' class='codeimg'></image>
+    </view>
+    <view class='afRigth'>
+      <view class='afT1'>广州星航教育科技有限公司</view>
+      <view class='afT2 i1'>电话：020-85656186</view>
+      <view class='afT2 i2'>地址：广州市天河区珠江新城天盈广场东塔4007</view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{aboutus.type == '2'}}">
+  <image src='{{aboutus.coverimage}}' mode='aspectFill' class='aboutimg'></image>
+</view>

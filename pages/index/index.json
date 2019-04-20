@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "猩考证教师资格证考试助手",
+  "navigationBarBackgroundColor": "#fbc93d",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "footer": "../../components/footer/footer"
+  }
+}

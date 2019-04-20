@@ -1,0 +1,16 @@
+<!--pages/wrongTopicList/wrongTopicList.wxml-->
+<view class='hierarchy2'>
+  <view class='h2nav' bindtap='goStart' wx:for="{{wrongList}}" wx:key="{{index}}" data-id='{{item.id}}' data-recordid='{{(item.paper_wrong.record_id) || (item.paper_wrong.record_id == "0" ? "0" : "") || (item.mock_wrong.record_id)}}'>
+    <view class='h2T1'><view class='h2icon'></view>{{item.paper_name || item.chapter_name }}</view>
+    <view class='h2T2'><text class='iconbox iwrong'>错题：<text class='count'>{{item.wrong_number}}</text>题</text></view>
+  </view>
+  <!-- <view class='h2nav' bindtap='goStart'>
+    <view class='h2T1'><view class='h2icon'></view>第一章 职业理念</view>
+    <view class='h2T2'><text class='iconbox iwrong'>错题：<text class='count'>20</text>题</text></view>
+  </view>
+  <view class='h2nav' bindtap='goStart'>
+    <view class='h2T1'><view class='h2icon'></view>第一章 职业理念</view>
+    <view class='h2T2'><text class='iconbox iwrong'>错题：<text class='count'>20</text>题</text></view>
+  </view> -->
+</view>
+

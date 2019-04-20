@@ -1,0 +1,7 @@
+<!--pages/authorization/authorization.wxml-->
+<view class='authobox'>
+  <image src='../img/authorization.jpg' mode='aspectFill' class='authorization'></image>
+  <button class='authbtn' wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">马上体验</button>
+<view wx:else class='authbtn'>请升级微信版本</view>
+</view>
+

@@ -1,0 +1,27 @@
+/**app.wxss**/
+.container {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+} 
+button {
+  margin:0;
+  padding:0;
+  border:0 !important;
+  outline:none;
+  list-style-type:none;
+  border-radius:0;
+  box-shadow:none;
+  background:none;
+}
+.emptybox12{
+  height: 120rpx;
+}
+.emptybox15{
+  height: 150rpx;
+}
+.item-ans{
+  padding-bottom: 120rpx;
+}

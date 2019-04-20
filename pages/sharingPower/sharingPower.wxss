@@ -1,0 +1,145 @@
+/* pages/sharingPower/sharingPower.wxss */
+.spMain{
+  padding: 25rpx 5% 60rpx;
+  box-sizing: border-box;
+}
+.spMode1{
+  padding: 20rpx;
+  box-sizing: border-box;
+  border: 1rpx solid #cccccc;
+  border-radius: 25rpx;
+}
+.spT1{
+  font-size: 28rpx;
+  color: #333;
+}
+.spT2{
+  font-size: 24rpx;
+  color: #333;
+}
+.spMode2{
+  text-align: center;
+  padding: 40rpx 0 60rpx;
+}
+.headerimg{
+  width: 128rpx;
+  height: 128rpx;
+  display: inline-block;
+  border-radius: 50%;
+}
+.spT3{
+  font-size: 26rpx;
+  color: #666;
+  line-height: 45rpx;
+}
+.spbtn{
+  flex: 1;
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  height: 90rpx;
+  font-size: 30rpx;
+  color: #fff;
+  background: #ff9900;
+  border-radius: 100rpx;
+  line-height: 90rpx;
+  margin-top: 30rpx;
+}
+.spMode3{
+  padding: 30rpx 4% 20rpx;
+  box-sizing: border-box;
+  position: relative;
+  border: 1rpx solid #ff9900;
+  border-radius: 20rpx;
+  margin-top: 50rpx;
+}
+.spm3title{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.spm3titlechild{
+  background: #fff;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #ff9900;
+  position: relative;
+  display: inline-block;
+  padding: 0 40rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.spm3titlechild::before{
+  content: '';
+  display: inline-block;
+  width: 8rpx;
+  height: 8rpx;
+  border: 1rpx solid #ff9900;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0,-50%);
+}
+.spm3titlechild::after{
+  content: '';
+  display: inline-block;
+  width: 8rpx;
+  height: 8rpx;
+  border: 1rpx solid #ff9900;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0,-50%);
+}
+.zlList{
+  padding: 70rpx 0 70rpx 146rpx;
+  position: relative;
+  display: flex;
+  display: -webkit-flex;
+}
+.friendimg{
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0,-50%);
+}
+.zlchild1{
+  width: 75%;
+  font-size: 26rpx;
+  color: #666;
+}
+.zlchild2{
+  width: 25%;
+  text-align: right;
+  font-size: 26rpx;
+  color: #666;
+}
+.btnview{
+  display: flex;
+  display: -webkit-flex;
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+.urlindex{
+  flex: 1;
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  height: 90rpx;
+  font-size: 30rpx;
+  color: #fff;
+  background: #fbc93d;
+  border-radius: 100rpx;
+  line-height: 90rpx;
+  margin-top: 30rpx;
+  margin-left: 40rpx;
+}
+.nonetext{
+  font-size: 28rpx;
+  color: #666;
+  padding: 40rpx 0;
+  text-align: center;
+}

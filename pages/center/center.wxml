@@ -1,0 +1,61 @@
+<!--pages/center/center.wxml-->
+<view class='centerBanner'>
+  <image class='cban' src='../img/centerBanner.jpg' mode='aspectFill'></image>
+  <view class='cenbanCon' bindtap='urleditInformation'>
+    <view class='cbcLeft'>
+      <image src='{{userInfo.avatar}}' mode='aspectFill' class='headerimg'></image>
+    </view>
+    <view class='cbcRight'>
+      <view class='useName'>{{userInfo.name}}</view>
+      <view class='changeInfo'>编辑个人信息</view>
+      <view class='motto'>努力格言：{{userInfo.motto ? userInfo.motto : ''}}</view>
+    </view>
+  </view>
+</view>
+<view class='centermain'>
+  <view class='centerchild' bindtap='urlwrongTopic'>
+    <image src='../img/c1.png' class='centericon'></image>
+    <view class='cf'>错题本</view>
+  </view>
+  <!-- <view class='centerchild' bindtap='urlmemo'>
+    <image src='../img/c2.png' class='centericon'></image>
+    <view class='cf'>备忘录</view>
+  </view> -->
+  <view class='centerchild' bindtap='urlcollection'>
+    <image src='../img/c3.png' class='centericon'></image>
+    <view class='cf'>题目收藏</view>
+  </view>
+  <view class='centerchild' bindtap='urlrecord'>
+    <image src='../img/c4.png' class='centericon'></image>
+    <view class='cf'>答题记录</view>
+  </view>
+  <view class='centerchild'>
+    <image src='../img/c5.png' class='centericon'></image>
+    <view class='cf'>联系客服</view>
+    <button open-type="contact" plain='true' class='contactbtn' />
+  </view>
+  <view class='centerchild' bindtap='showGroup'>
+    <image src='../img/c6.png' class='centericon'></image>
+    <view class='cf'>考证群</view>
+  </view>
+  <view class='centerchild' bindtap='urlaboutUs'>
+    <image src='../img/c7.png' class='centericon'></image>
+    <view class='cf'>关于我们</view>
+  </view>
+  <!-- <view class='centerchild' bindtap='myOrderFun'>
+    <image src='../img/c8.png' class='centericon'></image>
+    <view class='cf'>我的订单</view>
+  </view> -->
+  <view class='centerchild' bindtap='urlbaoban'>
+    <image src='../img/c9.png' class='centericon'></image>
+    <view class='cf'>报班</view>
+  </view>
+</view>
+<view class='groupcontent' wx:if="{{isshowgroup}}">
+  <view class='shadowbox' bindtap='closeGroup'></view>
+  <view class='groupmain'>
+    <view class='closeicon' bindtap='closeGroup'></view>
+    <image src='{{codeimg}}' mode='aspectFill' class='codeimg'></image>
+    <view class='gT1'>考证备考群</view>
+  </view>
+</view>

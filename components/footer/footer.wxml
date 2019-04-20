@@ -1,0 +1,23 @@
+<!--components/footer/footer.wxml-->
+<cover-view class='bottomNav'>
+  <cover-view class='bottomNav_child' bindtap='firstLinkFun'>
+    <cover-image class='icon' src='../../pages/img/index.png'></cover-image>
+    <cover-view class='navtxt'>返回首页</cover-view>
+  </cover-view>
+  <cover-view class='bottomNav_child' bindtap='secondLinkFun'>
+    <cover-image class='icon c1' src='../../pages/img/share.png'></cover-image>
+    <cover-view class='navtxt'>学习数据</cover-view>
+  </cover-view>
+  <cover-view class='bottomNav_child' bindtap='thirdLinkFun'>
+    <cover-image class='icon c2' src='../../pages/img/load.png'></cover-image>
+    <cover-view class='navtxt'>我的</cover-view>
+  </cover-view>
+  <!-- <cover-view class='bottomNav_child' bindtap='aiIndex'>
+    <cover-image class='icon c1' src='../../pages/img/share.png'></cover-image>
+    <button class='sharebtn navtxt' open-type="share" plain="true">分享好友</button>
+  </cover-view>
+  <cover-view class='bottomNav_child' bindtap='generatingPoster'>
+    <cover-image class='icon c2' src='../../pages/img/load.png'></cover-image>
+    <cover-view class='navtxt'>生成海报</cover-view>
+  </cover-view> -->
+</cover-view>

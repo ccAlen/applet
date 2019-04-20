@@ -1,0 +1,64 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/studyData/studyData",
+    "pages/center/center",
+    "pages/record/record",
+    "pages/aboutUs/aboutUs",
+    "pages/memo/memo",
+    "pages/wrongTopicList/wrongTopicList",
+    "pages/sharingPower/sharingPower",
+    "pages/list/list",
+    "pages/resultsStatistical/resultsStatistical",
+    "pages/authorization/authorization",
+    "pages/typeSelection/typeSelection",
+    "pages/exercises/exercises",
+    "pages/exercisesPaper/exercisesPaper",
+    "pages/chapterLists/chapterLists",
+    "pages/mainPointsDetails/mainPointsDetails",
+    "pages/memoryCard/memoryCard",
+    "pages/sheet/sheet",
+    "pages/editInformation/editInformation",
+    "pages/wrongTopic/wrongTopic",
+    "pages/collection/collection",
+    "pages/collectionList/collectionList",
+    "pages/exercisesCollection/exercisesCollection",
+    "pages/exercisesLevelPaper/exercisesLevelPaper",
+    "pages/exerciseswrong/exerciseswrong",
+    "pages/levelresult/levelresult",
+    "pages/class/class"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "template",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#f4ba1c",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "pages/img/f_icon4.png",
+        "selectedIconPath": "pages/img/f_icon44.png",
+        "color": "#1d1d1d"
+      },
+      {
+        "pagePath": "pages/studyData/studyData",
+        "text": "学习数据",
+        "iconPath": "pages/img/f_icon5.png",
+        "selectedIconPath": "pages/img/f_icon55.png",
+        "color": "#1d1d1d"
+      },
+      {
+        "pagePath": "pages/center/center",
+        "text": "我的",
+        "iconPath": "pages/img/f_icon6.png",
+        "selectedIconPath": "pages/img/f_icon66.png",
+        "color": "#1d1d1d"
+      }
+    ]
+  }
+}

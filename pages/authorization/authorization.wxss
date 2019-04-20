@@ -1,0 +1,21 @@
+/* pages/authorization/authorization.wxss */
+.authorization{
+  display: block;
+  width: 750rpx;
+  height: 823rpx;
+}
+.authobox{
+  position: relative;
+}
+.authbtn{
+  display: block;
+  width: 80%;
+  margin:100rpx 10%;
+  background: #fbc93d;
+  color: #fff;
+  font-size: 34rpx;
+  text-align: center;
+  border-radius: 100rpx;
+  height: 99rpx;
+  line-height: 99rpx;
+}

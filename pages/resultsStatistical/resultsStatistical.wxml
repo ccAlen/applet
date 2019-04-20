@@ -1,0 +1,105 @@
+<!--pages/resultsStatistical/resultsStatistical.wxml-->
+<wxs module="filter" src="../../utils/countdown.wxs"></wxs>
+<view class='headerbox'>
+  <view class='headerchild'>
+    <!-- <view class='hcT1'>章节练习<text>第一章</text><text>职业理念</text></view> -->
+    <view class='hcT1'>{{paperInfo.name || chioseRecordInfo.paper.paper_name}}</view>
+    <view class='hcT1' wx:if="{{testType != '1'}}">交卷时间<text>{{result.finish_date || chioseRecordInfo.finish_date}}</text></view>
+    <!-- <view class='practice' wx:if="{{testType == '1'}}">练习下一章</view> -->
+    <view class='practice' bindtap='urlBack'>{{isstudydata ? "返回学习数据页" : "返回首页"}}</view>
+  </view>
+  <view class='headerchild1'>
+    <view class='progress_box studyRight'>
+        <!-- 绘制圆环背景 -->
+        <canvas class="progress_bg" canvas-id="canvasProgressbg" />
+        <!-- 绘制加载中圆弧 -->
+        <canvas class="progress_canvas" canvas-id="canvasProgress" /> 
+        <!-- 绘制圆弧中心提示文字 -->
+        <view class="progress_text">
+          <view>
+            <view class='progress_info'>{{filter.parseFloattwo(progress_txt,'0')}}%</view>
+            <view class='piT'>正确率</view>
+          </view>
+        </view>
+      </view>
+  </view>
+</view>
+<view class='resultsmainbox'>
+  <view class='rmchild1'>
+    <image src='../img/img5.png' mode='aspectFill' class='efforts'></image>
+    <view class='rmcT1'>不要灰心，好好学习，再来挑战！</view>
+    <view class='graybox'>
+      <view class='graychild'>
+        <view class='gcT1' wx:if="{{testType != '1'}}"><text>{{result.correct}}/</text>{{result.paper.question_number}}</view>
+        <view class='gcT1' wx:if="{{testType == '1'}}"><text>{{chapterCard.correct}}/</text>{{chapterCard.total}}</view>
+        <view class='gcT2 b1'>答对</view>
+      </view>
+      <view class='graychild' wx:if="{{testType != '1'}}">
+        <view class='gcT1'><text>{{result.cost_time}}</text>Min</view>
+        <view class='gcT2 b2'>用时</view>
+      </view>
+    </view>
+  </view>
+  <view class='rmchild2'>
+    <view class='rmcT3'>选择题</view>
+    <view class='exercisesbox'>
+      <view class='exercises {{item.haddone == "1" ? "hasdone" : ""}} {{item.isCorrect == "0" ? "hasdone1" : ""}}' wx:for="{{sheetList.choice}}" wx:key="{{index}}">{{item.paper_sort ? item.paper_sort : index + 1}}</view>
+      <!-- <view class='exercises'>1</view>
+      <view class='exercises'>1</view>
+      <view class='exercises'>1</view>
+      <view class='exercises'>1</view>
+      <view class='exercises'>12</view> -->
+    </view>
+  </view>
+  <view class='rmchild2'>
+    <view class='rmcT3'>非选择题</view>
+    <view class='exercisesbox'>
+      <view class='exercises {{item.haddone == "1" ? "hasdone" : ""}} {{item.isCorrect == "0" ? "hasdone1" : ""}}' wx:for="{{sheetList.question}}" wx:key="{{index}}">{{item.question_sort || item.paper_sort}}</view>
+      <!-- <view class='exercises hasdone'>1</view>
+      <view class='exercises hasdone1'>1</view>
+      <view class='exercises'>1</view>
+      <view class='exercises'>1</view>
+      <view class='exercises'>1</view>
+      <view class='exercises'>1</view>
+      <view class='exercises'>1</view>
+      <view class='exercises'>12</view> -->
+    </view>
+  </view>
+  <!-- <view class='rmchild2'>
+    <view class='rmcT3'>材料分析题</view>
+    <view class='exercisesbox'>
+      <view class='exercises hasdone'>1</view>
+      <view class='exercises hasdone1'>1</view>
+      <view class='exercises'>1</view>
+      <view class='exercises'>1</view>
+      <view class='exercises'>1</view>
+      <view class='exercises'>1</view>
+      <view class='exercises'>1</view>
+      <view class='exercises'>12</view>
+    </view>
+  </view>
+  <view class='rmchild2'>
+    <view class='rmcT3'>章节要点</view>
+    <view class='mpbox1'>
+      <view class='mptitle1'>
+        <view class='h1T1' bindtap='slideDown'>
+          <view class='h2icon {{h1isshow ? "i2" : "i1"}}'></view>职业理念</view>
+        <view class='hierarchy3' wx:if="{{h1isshow}}">
+          <view class='h3nav' bindtap='openSummarybox'>
+            <view class='h2T1'>
+              <view class='h3icon'></view>教师法法例法规</view>
+          </view>
+          <view class='h3nav' bindtap='openSummarybox'>
+            <view class='h2T1'>
+              <view class='h3icon'></view>教师法法例法规</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view> -->
+</view>
+<view class='resultsFooter'>
+  <view class='footerchilds graychild' bindtap='urlexerciseswrong' data-onlyerror='1'>错误分析</view>
+  <!-- <view class='footerchilds'>再试一次</view> -->
+  <view class='footerchilds graychild' bindtap='urlexerciseswrong' data-onlyerror='0'>全部分析</view>
+</view>

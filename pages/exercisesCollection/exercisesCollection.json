@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "试卷题目",
+  "navigationBarBackgroundColor": "#fbc93d",
+  "disableScroll": true,
+  "usingComponents": {
+    "htmltowxml": "../../components/html2wxml/html2wxml"
+  }
+}

@@ -1,0 +1,97 @@
+/* pages/record/record.wxss */
+page{
+  background: #f9fafc;
+}
+.memoNavbox{
+  display: flex;
+  display: -webkit-flex;
+}
+.memoNav{
+  width: 50%;
+  text-align: center;
+  background: #fbc93d;
+}
+.memoNav1{
+  width: 33.3%;
+  text-align: center;
+  background: #fff;
+}
+.memochild1{
+  font-size: 26rpx;
+  color: #333;
+  padding: 10rpx 30rpx;
+  position: relative;
+  display: inline-block;
+}
+.selected1{
+  color: #ff9900;
+}
+.memochild{
+  font-size: 30rpx;
+  color: #fff;
+  padding: 15rpx 30rpx;
+  position: relative;
+  display: inline-block;
+}
+.selected{
+  border-bottom: 6rpx solid #ff9900;
+}
+.listcontent{
+  padding: 15rpx;
+  box-sizing: border-box;
+}
+.list{
+  background: #fff;
+  border-radius: 20rpx;
+  margin-bottom: 15rpx;
+  box-shadow: 0 2px 10px 0 #eee;
+  padding: 15rpx 4%;
+  box-sizing: border-box;
+  display: flex;
+  display: -webkit-flex;
+}
+.childLeft{
+  width: 65%;
+  font-size: 24rpx;
+}
+.childRight{
+width: 35%;
+text-align: right;
+padding-bottom: 30rpx;
+position: relative;
+}
+.lT1{
+  color: #999;
+}
+.lT2{
+  color: #333;
+  line-height: 38rpx;
+  margin: 12rpx 0;
+  font-size: 26rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.canvas{
+  width: 160rpx;
+  height: 160rpx;
+  display: inline-block;
+}
+.zql{
+  font-size: 24rpx;
+  color: #999;
+  text-align: center;
+  display: inline-block;
+  width: 160rpx;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.more{
+  font-size: 26rpx;
+  color: #ff9900;
+  padding: 30rpx 0;
+  text-align: center;
+}

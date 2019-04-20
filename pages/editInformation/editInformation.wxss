@@ -1,0 +1,50 @@
+/* pages/editInformation/editInformation.wxss */
+.infolist{
+  padding: 20rpx 5%;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #e9e9e9;
+  display: flex;
+  display: -webkit-flex;
+}
+.infoleft,.inforight{
+  font-size: 26rpx;
+  color: #333;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+.list1{
+  padding: 0 8% 0 5%;
+}
+.infoleft{
+  width: 25%;
+}
+.inforight{
+  width: 75%;
+  justify-content: flex-end;
+}
+.list1 .infoleft,.list1 .inforight{
+  height: 90rpx;
+  line-height: 90rpx;
+}
+.headerimg{
+  display: inline-block;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+.rightinp{
+  text-align: right;
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+.infolist1{
+  padding: 20rpx 5%;
+  text-align: left;
+  border-bottom: 1rpx solid #e9e9e9;
+}
+.infolist1 .rightinp{
+  text-align: left;
+}

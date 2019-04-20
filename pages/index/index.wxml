@@ -1,0 +1,99 @@
+<!--index.wxml-->
+<!--pages/blog1/canvas.wxml-->
+<wxs module="filter" src="../../utils/countdown.wxs"></wxs>
+<view class='container'>
+  <image src='../img/indexBanner.jpg' mode='aspectFill' class='banimg'></image>
+  <view class='bantextbox'>
+  <!-- 下拉选择 -->
+    <view class='selectbox'>
+      <view class='select' bindtap='openselectSubjectFun'>{{hasSubjects.certificate.name}}<text wx:if="{{hasSubjects.phase.name && hasSubjects.phase.name != '**'}}">-</text>{{hasSubjects.phase.name != '**' ? hasSubjects.phase.name : ''}}-{{hasSubjects.subject.name}}</view>
+    </view>
+    <view class='studybox'>
+      <view class='studyLeft'>
+        <view class='slChild1'>
+          <view class='day'>{{day}}天</view>
+          <view class='time'>{{clock}}</view>
+        </view>
+        <view class='slChild2'>备考倒计时</view>
+      </view>
+      <view class='progress_box studyRight'>
+        <!-- 绘制圆环背景 -->
+        <canvas class="progress_bg" canvas-id="canvasProgressbg" />
+        <!-- 绘制加载中圆弧 -->
+        <canvas class="progress_canvas" canvas-id="canvasProgress" /> 
+        <!-- 绘制圆弧中心提示文字 -->
+        <view class="progress_text">
+          <text class='progress_info'> {{filter.parseFloattwo(progress_txt,'0')}}%</text>
+        </view>
+        <view class='studytxt'>学习进度</view>
+      </view>
+    </view>
+    <view class='btnbox'>
+      <view class='studybtn' bindtap='urlChapterLists'>课程学习</view>
+      <view class='studybtntxt'>开启一天的课程学习吧！</view>
+    </view>
+  </view> 
+</view>
+<view class='indexmain'>
+  <view class='indexchild' bindtap='urlListFun' data-type='1'>
+    <view class='ic_left container'>
+      <image src='../img/icon0.png' mode='aspectFill' class='icon'></image>
+    </view>
+    <view class='ic_right'>
+      <view class='vwidth'>
+        <view class='font1'>章节练习</view>
+        <view class='ic_bom'>
+          <view class='font2 percent'>正确率：{{filter.parseFloattwo(IndexInfo.chapter_practice.correct / (IndexInfo.chapter_practice.completed == '0' ? '1' : IndexInfo.chapter_practice.completed) * 100,1)}}%</view>
+          <view class='font2 answer'>已答题：{{IndexInfo.chapter_practice.completed}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='indexchild' bindtap='urlListFun' data-type='2'>
+    <view class='ic_left container'>
+      <image src='../img/icon1.png' mode='aspectFill' class='icon'></image>
+    </view>
+    <view class='ic_right'>
+      <view class='vwidth'>
+        <view class='font1'>历年真题</view>
+        <view class='ic_bom'>
+          <view class='font2 percent'>正确率：{{filter.parseFloattwo(IndexInfo.past_papers.correct / (IndexInfo.past_papers.completed == '0' ? '1' : IndexInfo.past_papers.completed) * 100,1)}}%</view>
+          <view class='font2 answer'>已答题：{{IndexInfo.past_papers.completed}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='indexchild' bindtap='urlListFun' data-type='3'>
+    <view class='ic_left container'>
+      <image src='../img/icon2.png' mode='aspectFill' class='icon'></image>
+    </view>
+    <view class='ic_right'>
+      <view class='vwidth'>
+        <view class='font1'>模拟考试</view>
+        <view class='ic_bom'>
+          <view class='font2 percent'>正确率：{{filter.parseFloattwo(IndexInfo.mock_exam.correct / (IndexInfo.mock_exam.completed == '0' ? '1' : IndexInfo.mock_exam.completed) * 100,1)}}%</view>
+          <view class='font2 answer'>已答题：{{IndexInfo.mock_exam.completed}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 证书选择 -->
+<view class='boombox' wx:if="{{isshowselect}}">
+  <view class='shadowbox' bindtap='closeSubjectSelect'></view>
+  <view class='boomMain'>
+    <view class='boomNav'>
+      <view class='boomNavChild {{pageindex == 1 ? "navselected" : ""}}' data-pageindex='1' bindtap='changePageindex'>考证类型</view>
+      <view class='boomNavChild {{pageindex == 2 ? "navselected" : ""}}' wx:if="{{subjectLabels.length > 0}}" data-pageindex='2' bindtap='changePageindex'>学段</view>
+      <view class='boomNavChild {{pageindex == 3 ? "navselected" : ""}}' data-pageindex='3' bindtap='changePageindex'>科目</view>
+    </view>
+    <view class='boomListbox'>
+      <!-- <view class='boomList selected'>教师资格证</view> -->
+      <view wx:if="{{pageindex == 1}}" class='boomList {{hasSubjects.certificate.id == item.id ? "selected" : ""}}' wx:for="{{subjectList}}" wx:key="{{index}}" data-id='{{item.id}}' data-name='{{item.subject_name}}' data-labels='{{item.labels}}' bindtap='selectSubject'>{{item.subject_name}}</view>
+      <view wx:if="{{pageindex == 2}}" class='boomList {{studyDateid == item.id ? "selected" : ""}}' wx:for="{{subjectLabels}}" wx:key="{{index}}" data-id='{{item.id}}' data-name='{{item.tag_name}}' data-subject_id='{{item.subject_id}}' bindtap='selectData'>{{item.tag_name}}</view>
+  <view wx:if="{{pageindex == 3}}" class='boomList {{courseSelectid == item.id ? "selected" : ""}}' wx:for="{{courseList}}" wx:key="{{index}}" data-id='{{item.id}}' data-name='{{item.subject_name}}' bindtap='selectCourse'>{{item.subject_name}}</view>
+      <!-- <view class='boomList'>人力资源师</view>
+      <view class='boomList'>心理咨询师</view> -->
+    </view>
+  </view>
+</view>

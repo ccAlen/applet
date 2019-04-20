@@ -1,0 +1,2 @@
+/* pages/collection/collection.wxss */
+@import "../wrongTopic/wrongTopic.wxss"

@@ -1,0 +1,43 @@
+<!--pages/sharingPower/sharingPower.wxml-->
+<view class='spMain'>
+  <view class='spMode1'>
+    <view class='spT1'>{{helpedpaper.paper_name}}</view>
+    <!-- <view class='spT2'>（1天前）</view> -->
+  </view>
+  <view class='spMode2'>
+    <image src='{{helpedpaper.user.avatar}}' mode='aspectFill' class='headerimg'></image>
+    <view class='spT3'>{{helpedpaper.user.name}}</view>
+    <view class='spT3'>正在参加“模拟卷”解锁助力，快来帮他助力吧！</view>
+    <view class='btnview'>
+      <view class='spbtn' bindtap='helpFun'>{{!helpsuccess ? "我要助力" : "助力成功"}}</view>
+      <view class='urlindex' bindtap='urlIndex'>返回首页</view>
+    </view>
+    
+  </view>
+  <view class='spMode3'>
+    <view class='spm3title'><text class='spm3titlechild'>助力榜单</text></view>
+    <view class='zlbox'>
+      <view class='zlList' wx:for="{{helprecord}}" wx:key="{{index}}">
+        <image src='{{item.helpers[0].avatar}}' mode='aspectFill' class='headerimg friendimg'></image>
+        <view class='zlchild1'>{{item.helpers[0].name}}</view>
+        <view class='zlchild2'>助力：1</view>
+      </view>
+      <view class='nonetext' wx:if="{{helprecord.length == '0'}}">暂时还没有人帮他助力喔~</view>
+      <!-- <view class='zlList'>
+        <image src='../img/s1.jpg' mode='aspectFill' class='headerimg friendimg'></image>
+        <view class='zlchild1'>summer</view>
+        <view class='zlchild2'>助力：12</view>
+      </view>
+      <view class='zlList'>
+        <image src='../img/s1.jpg' mode='aspectFill' class='headerimg friendimg'></image>
+        <view class='zlchild1'>summer</view>
+        <view class='zlchild2'>助力：12</view>
+      </view>
+      <view class='zlList'>
+        <image src='../img/s1.jpg' mode='aspectFill' class='headerimg friendimg'></image>
+        <view class='zlchild1'>summer</view>
+        <view class='zlchild2'>助力：12</view>
+      </view> -->
+    </view>
+  </view>
+</view>

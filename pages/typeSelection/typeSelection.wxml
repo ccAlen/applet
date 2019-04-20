@@ -1,0 +1,13 @@
+<!--pages/typeSelection/typeSelection.wxml-->
+<!-- <view class='tsTitle'><view class='tstchild'>{{pagetitle}}</view></view> -->
+<view class='typecontent'>
+  <!-- <view class='typechild selected'>教师资格证</view> -->
+  <view wx:if="{{pageindex == 1}}" class='typechild {{subjectSelectid == item.id ? "selected" : ""}}' wx:for="{{subjectList}}" wx:key="{{index}}" data-id='{{item.id}}' data-name='{{item.subject_name}}' data-labels='{{item.labels}}' bindtap='selectSubject'>{{item.subject_name}}</view>
+  <view wx:if="{{pageindex == 2}}" class='typechild {{studyDateid == item.id ? "selected" : ""}}' wx:for="{{subjectLabels}}" wx:key="{{index}}" data-id='{{item.id}}' data-name='{{item.tag_name}}' data-subject_id='{{item.subject_id}}' bindtap='selectData'>{{item.tag_name}}</view>
+  <view wx:if="{{pageindex == 3}}" class='typechild {{courseSelectid == item.id ? "selected" : ""}}' wx:for="{{courseList}}" wx:key="{{index}}" data-id='{{item.id}}' data-name='{{item.subject_name}}' bindtap='selectCourse'>{{item.subject_name}}</view>
+</view>
+<view class='nextstepbox'>
+  <view class='previousStep' wx:if='{{pageindex != 1 && isShowperv}}' bindtap='prevStep'><view class='prechild'>返回上一步</view></view>
+  <view class='nextStep' wx:if='{{pageindex != 3 && isShowNext}}' bindtap='nextStep'><view class='nextchild'>进入下一步</view></view>
+</view>
+<view class='emptybox12'></view>

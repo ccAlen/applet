@@ -1,0 +1,7 @@
+<!--pages/memoryCard/memoryCard.wxml-->
+<view class='memoryCard'>
+  <view class='centerbox'>
+    <image class='memoryimg' src='{{imgalist}}' mode='widthFix'></image>
+    <view class='saveimg' bindtap="previewImage">保存图片</view>
+  </view>
+</view>

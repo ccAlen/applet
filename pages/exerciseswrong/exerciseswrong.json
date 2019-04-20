@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "错题解析",
+  "navigationBarBackgroundColor": "#fbc93d",
+  "disableScroll": true,
+  "usingComponents": {
+    "htmltowxml": "../../components/html2wxml/html2wxml"
+  }
+}

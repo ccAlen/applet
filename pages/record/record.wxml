@@ -1,0 +1,24 @@
+<!--pages/record/record.wxml-->
+<view class='memoNavbox'>
+  <!-- <view class='memoNav' bindtap='navChange' data-nav='1'><view class='memochild {{navindex == "1" ? "selected" : ""}}'>章节练习</view></view> -->
+  <view class='memoNav' bindtap='navChange' data-nav='2'><view class='memochild {{navindex == "2" ? "selected" : ""}}'>历年真题</view></view>
+  <view class='memoNav' bindtap='navChange' data-nav='3'><view class='memochild {{navindex == "3" ? "selected" : ""}}'>模拟考试</view></view>
+</view>
+<view class='memoNavbox'>
+  <view class='memoNav1' bindtap='timeChange' data-nav='0'><view class='memochild1 {{timeindex == "0" ? "selected1" : ""}}'>全部</view></view>
+  <view class='memoNav1' bindtap='timeChange' data-nav='1'><view class='memochild1 {{timeindex == "1" ? "selected1" : ""}}'>最近一周</view></view>
+  <view class='memoNav1' bindtap='timeChange' data-nav='2'><view class='memochild1 {{timeindex == "2" ? "selected1" : ""}}'>最近一个月</view></view>
+</view>
+<view class='listcontent'>
+  <view class='list' wx:for="{{recordList}}" wx:key="{{index}}" data-id="{{item.id}}" bindtap='urlresultsStatistical'>
+    <view class='childLeft'>
+      <view class='lT1'>交卷时间：{{item.finish_date ? item.finish_date : '暂无交卷时间'}}</view>
+      <view class='lT2'>{{item.paper.paper_name}}</view>
+    </view>
+    <view class='childRight'>
+      <canvas canvas-id="{{'runCanvas_'+index}}" id="{{'runCanvas_'+index}}" class='canvas'></canvas>
+      <view class='zql'>正确率</view>
+    </view>
+  </view>
+</view>
+<view class='more' bindtap='moreFun' wx:if="{{recordList.length < listpage.total}}">查看更多记录</view>

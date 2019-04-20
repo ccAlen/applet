@@ -1,0 +1,81 @@
+<!--pages/chapterLists/chapterLists.wxml-->
+<wxs module="filter" src="../../utils/countdown.wxs"></wxs>
+<view class='navTop'>
+  <view class='ntchild' bindtap='changeNav' data-index='1'>
+    <view class="ntctxt {{navselected == '1' ? 'ntctxtSelected' : ''}}">普通模式</view>
+  </view>
+  <view class='ntchild' bindtap='changeNav' data-index='2'>
+    <view class="ntctxt {{navselected == '2' ? 'ntctxtSelected' : ''}}">精华模式</view>
+  </view>
+</view>
+<view class='subjectContent'>
+  <view class='hierarchy1'>
+    <view class='h1nav'>
+      {{subject.subjectName}}
+      <!-- <view class='h1icon' bindtap='openbox'></view> -->
+    </view>
+    <view class='hierarchy2' wx:for="{{chapterList}}" wx:key="{{index}}">
+      <view class='h2nav' bindtap='slideDown' data-id='{{item.id}}'>
+        <view class='h2T1'>
+          <view class='h2icon {{item.state ? "i2" : "i1"}}'></view>{{item.chapter_name}}</view>
+        <view class='h2T2'>学习进度：
+          <text>{{filter.parseFloattwo(item.persent.learned_progress[0]/item.persent.learned_progress[1]* 100)}}%</text>掌握程度：
+          <text>{{filter.parseFloattwo(item.persent.mastered_degree[0]/item.persent.mastered_degree[1] * 100)}}%</text>
+        </view>
+        <view class='share' wx:if="{{item.unlock_pattern == '1'}}">分享解锁
+          <button class='sharebtn' open-type="share" plain="true"></button>
+        </view>
+      </view>
+<!-- 普通模式 -->
+      <view class='hierarchy3' wx:if="{{item.state && navselected == '1'}}" wx:for="{{item.children}}" wx:key="{{idx}}" wx:for-index="idx" wx:for-item="childItem">
+        <view class='h3nav' bindtap='openSummarybox' data-id='{{childItem.id}}' data-pointsName='{{childItem.chapter_name}}' data-chapterid='{{item.id}}'>
+          <view class='h2T1'>
+            <view class='h3icon'></view>{{childItem.chapter_name}}</view>
+          <view class='h2T2'>学习进度：
+            <text>{{filter.parseFloattwo(childItem.persent.learned_progress[0]/childItem.persent.learned_progress[1]*100)}}%</text>掌握程度：
+            <text>{{filter.parseFloattwo(childItem.persent.mastered_degree[0]/childItem.persent.mastered_degree[1]*100)}}%</text>
+          </view>
+          <view class='pointcount'>{{childItem.point_num}}要点</view>
+        </view>
+      </view>
+<!-- 精华模式 -->
+      <view class='hierarchy3' wx:if="{{item.state && navselected == '2'}}" wx:for="{{item.children}}" wx:key="{{idx}}" wx:for-index="idx" wx:for-item="childItem">
+        <view class='h3nav' data-id='{{childItem.id}}' data-learned='{{childItem.learned}}' bindtap='urlMainpoint'>
+          <view class='h2T1'>
+            <view class='h3icon'></view>{{childItem.chapter_name}}</view>
+          <view class='h2T2'>学习进度：
+            <text>{{filter.parseFloattwo(childItem.persent.learned_progress[0]/childItem.persent.learned_progress[1]*100)}}%</text>掌握程度：
+            <text>{{filter.parseFloattwo(childItem.persent.mastered_degree[0]/childItem.persent.mastered_degree[1]*100)}}%</text>
+          </view>
+          <!-- <view class='pointcount'>{{childItem.point_num}}要点</view> -->
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='summarybox' wx:if="{{isshowSummarybox}}">
+  <view class='shadowbox' bindtap='closeSummarybox'>
+    <view class='closemenu'>轻触这里关闭目录</view>
+  </view>
+  <view class='summarymain'>
+    <view class='summaryHeader'>{{pointsName}}
+      <view class='pointchange'>(<text class='gou'></text>为已记住了的要点)<text class='pointchangetext'>({{pointsList.length}}要点)</text></view>
+    </view>
+    <view class='summarylist {{chapterSelectedId == item.id ? "chapterselected" : ""}} {{item.learned.has_mastered == "1" ? "has_learnen" : ""}}' data-id='{{item.id}}' data-learned='{{item.learned}}' bindtap='urlMainpoint' wx:for="{{pointsList}}" wx:key="{{index}}">{{index + 1}}.{{item.chapter_name}}</view>
+  </view>
+</view>
+<!-- <view class='selectSelectbox' wx:if="{{isshowbox}}">
+  <view class='ssShadow' bindtap='closebox'></view>
+  <view class='ssmain'>
+    <view class='ssList ssSlected'>科目一：综合素质</view>
+    <view class='ssList'>科目一：综合素质</view>
+    <view class='ssList'>科目一：综合素质</view>
+    <view class='ssList'>科目一：综合素质</view>
+    <view class='ssList'>科目一：综合素质</view>
+    <view class='ssList'>科目一：综合素质</view>
+    <view class='ssList'>科目一：综合素质</view>
+    <view class='ssList'>科目一：综合素质</view>
+    <view class='ssList'>科目一：综合素质</view>
+    <view class='ssList'>科目一：综合素质</view>
+  </view>
+</view> -->

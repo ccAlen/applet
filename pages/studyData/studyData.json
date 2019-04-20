@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "学习数据",
+  "navigationBarBackgroundColor": "#fbc93d",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#eeeeee", 
+  "backgroundTextStyle": "light" 
+}

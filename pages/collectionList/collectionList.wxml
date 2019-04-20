@@ -1,0 +1,34 @@
+<!--pages/collectionList/collectionList.wxml-->
+<view class='memoNavbox'>
+  <view class='memoNav' bindtap='navChange' data-nav='1'><view class='memochild {{navindex == "1" ? "selected" : ""}}'>选择题（{{choiceList.page.total}}道）</view></view>
+  <view class='memoNav' bindtap='navChange' data-nav='2'><view class='memochild {{navindex == "2" ? "selected" : ""}}'>非选择题（{{shortList.page.total}}道）</view></view>
+</view>
+
+<view class='collectionbox'>
+  <view class='collectionList' wx:if="{{navindex == '1'}}" wx:for="{{choiceList.list}}" wx:key="{{index}}" bindtap='urlCollectionList' data-id='{{item.id}}'>
+    <view class='collectChild1'>
+      <view class='cc1'>{{item.favorite.created_at}}</view>
+      <view class='cc2'><view class='collectindex'>{{index + 1}}/{{choiceList.page.total}}</view></view>
+    </view>
+    <view class='collectChild2'>{{item.title}}</view>
+  </view>
+  <view class='collectionList' wx:if="{{navindex == '2'}}" wx:for="{{shortList.list}}" wx:key="{{index}}" bindtap='urlCollectionList' data-id='{{item.id}}'>
+    <view class='collectChild1'>
+      <view class='cc1'>{{item.favorite.created_at}}</view>
+      <view class='cc2'><view class='collectindex'>{{index + 1}}/{{shortList.page.total}}</view></view>
+    </view>
+    <view class='collectChild2'>{{item.question_content}}</view>
+  </view>
+  <!-- <view class='collectionList'>
+    <view class='collectChild1'>
+      <view class='cc1'>1小时前</view>
+      <view class='cc2'><view class='collectindex'>1/4</view></view>
+    </view>
+    <view class='collectChild2'>（单选）人可以提供东西和钱，但不能提供智素质等内在东西，受教育者是学习的主体，是在教育活动中承担学习的责任，但不能但不能提供智素质等内在东西（单选）人可以提供东西和钱，但不能提供智素质等内在东西，受教育者是学习的主体，是在教育活动中承担学习的责任，但不能但不能提供智素质等内在东西</view>
+  </view> -->
+  <!-- 选择题的更多 -->
+  <view class='more' bindtap='choiceMore' wx:if="{{(choiceList.list.length < choiceList.page.total) && (navindex == '1')}}">查看更多题目</view>
+  <!-- 非选择题的更多 -->
+  <view class='more' bindtap='shortMore' wx:if="{{(shortList.list.length < shortList.page.total) && (navindex == '2')}}">查看更多题目</view>
+</view>
+

@@ -1,0 +1,26 @@
+<!--pages/memo/memo.wxml-->
+<view class='subjectContent'>
+  <view class='hierarchy1'>
+    
+    <view class='hierarchy2' wx:for="[0,1,2,3]" wx:key="{{index}}">
+      <view class='h2nav' bindtap='slideDown' data-id='{{item.id}}'>
+        <view class='h2T1'><view class='h2icon {{state ? "i2" : "i1"}}'></view>职业理念</view>
+        
+      </view>
+      <view class='hierarchy3' wx:if="{{state}}" wx:for="[0,1,2,3]" wx:key="{{idx}}" wx:for-index="idx" wx:for-item="childItem">
+        <view class='h3nav' bindtap='openSummarybox' data-id='{{childItem.id}}' data-pointsName='{{childItem.chapter_name}}' data-chapterid='{{item.id}}'>
+          <view class='h2T1'><view class='h3icon'></view>教师法法例法规</view>
+          <view class='pointcount'>40要点</view>
+        </view>
+      </view>
+      
+    </view>
+  </view>
+</view>
+<view class='summarybox' wx:if="{{isshowSummarybox}}">
+  <view class='shadowbox' bindtap='closeSummarybox'><view class='closemenu'>轻触这里关闭目录</view></view>
+  <view class='summarymain'>
+    <view class='summaryHeader'>{{pointsName}}<text>({{pointsList.length}}要点)</text></view>
+    <view class='summarylist {{chapterSelectedId == item.id ? "chapterselected" : ""}} {{item.learned.has_mastered == "1" ? "has_learnen" : ""}}' data-id='{{item.id}}' data-learned='{{item.learned}}' bindtap='urlMainpoint' wx:for="{{pointsList}}" wx:key="{{index}}">{{index + 1}}.{{item.chapter_name}}</view>
+  </view>
+</view>

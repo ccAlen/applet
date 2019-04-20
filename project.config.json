@@ -1,0 +1,64 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.4.2",
+	"appid": "wxca049fc11f3b4992",
+	"projectname": "%E5%88%B7%E9%A2%98%E5%B0%8F%E7%A8%8B%E5%BA%8F",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 1,
+			"list": [
+				{
+					"id": 0,
+					"name": "带withShareTicket的测试",
+					"pathName": "pages/studyData/studyData",
+					"query": "id=666",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群1",
+						"shareName": "g4AZf3uZQ4eJQrk70GYjKNfkdeZmefLLd4qZfZo7lZ4@cr4dev",
+						"shareKey": "QdIp5vVW06yvfQXbcwElkszpx6Z0YHVtjgtX9cL-ZCb13PqQtEgM8CdH4zp1qErDVC5W9YKSm1vYraG6v-pWmw~~"
+					}
+				},
+				{
+					"id": 1,
+					"name": "分享解锁",
+					"pathName": "pages/index/index",
+					"query": "paper_id=1&subject_id=2&user_id=141",
+					"scene": "1008"
+				}
+			]
+		}
+	}
+}

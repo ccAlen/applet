@@ -1,0 +1,30 @@
+<!--pages/mainPointsDetails/mainPointsDetails.wxml-->
+<view>
+  <!-- <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
+    <swiper-item wx:for="{{[0,1,2,3,4,5,6,7]}}" wx:key="{{index}}">
+      <scroll-view scroll-y="true" class="scoll-h"> -->
+        <view class="item-ans">
+          <view class='chapterName'>{{pointContent.chapter.chapter_name}}</view>
+          <view><htmltowxml json="{{content}}" bindWxmlTagATap="wxmlTagATap" change="{{_change}}"></htmltowxml></view>
+          <view class='pageindexbox'><view class='pichild' bindtap='urlshortAnswer' data-num='{{pointContent.choice_number}}'>例题{{pointContent.choice_number}}</view></view>
+          <view class='keywordbox'>
+            <view class='kwT1'>记忆关键词</view>
+            <view class='keychild'>
+              <view class='keyword' wx:for="{{pointContent.keywords}}" wx:key="{{index}}">{{_change ? '' : item}}</view>
+              <!-- <view class='keyword'>知识和技能</view>
+              <view class='keyword'>知识和技能</view>
+              <view class='keyword'>知识和技能</view>
+              <view class='keyword'>知识和技能</view> -->
+            </view>
+          </view>
+        </view>
+      <!-- </scroll-view>
+    </swiper-item>
+  </swiper> -->
+</view>
+<view class='mainPointFooter'>
+  <view class='mpfChild' bindtap='rememberFun' data-pointId='{{point_id}}'><view class='remember {{remember ? "orange" : ""}}'>记住了</view></view>
+  <view class='mpfChild1' bindtap='changeFun'><view class='remember1 {{_change ? "orange" : ""}}'>默记</view></view>
+  <view class='mpfChild'><view class='remember' bindtap='srcmemoryCard'>记忆卡片</view></view>
+</view>
+<view class='empbox'></view>

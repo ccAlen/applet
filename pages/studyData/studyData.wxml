@@ -1,0 +1,170 @@
+<!--pages/studyData/studyData.wxml-->
+<wxs module="filter" src="../../utils/countdown.wxs"></wxs>
+<view class='getphoneview' wx:if="{{showgetphone}}">点击按钮获取学习报告吧！
+  <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='btn_child'>获取学习数据</button>
+</view>
+<view class='module1'>
+  <view class='m1child'>
+    <view class='mT1'>
+      <text>{{reportInfo.cost_days}}</text>天</view>
+    <view class='mT2'>学习天数</view>
+  </view>
+  <view class='m1child'>
+    <view class='mT1'>
+      <text>{{reportInfo.cost_time}}</text>分钟</view>
+    <view class='mT2'>答题时长</view>
+  </view>
+</view>
+<view class='module1'>
+  <view class='m1child'>
+    <view class='mT3'>{{reportInfo.answer_total}}</view>
+    <view class='mT2'>我的总答题量</view>
+  </view>
+  <view class='m1child'>
+    <view class='mT3'>{{reportInfo.max_total}}</view>
+    <view class='mT2'>全平台最高答题量</view>
+  </view>
+</view>
+<view class='module2'>
+  <view class='module3'>
+    <view class='m1child'>
+      <view class='mT3'>{{reportInfo.right_number}}</view>
+      <view class='mT2'>答对量</view>
+    </view>
+    <view class='m1child'>
+      <view class='mT3'>{{filter.parseFloattwo(reportInfo.right_rate)=='NaN' ? '0' : filter.parseFloattwo(reportInfo.right_rate*100,2)}}%</view>
+      <view class='mT2'>正确率（选择题）</view>
+    </view>
+  </view>
+  <view class='m3child'>您当前的正确率已击败全国
+    <text>{{filter.parseFloattwo(reportInfo.rank_rate,'0')=='NaN' ? '0' : filter.parseFloattwo(reportInfo.rank_rate,'0')}}%</text>的学员</view>
+</view>
+<view class='module2'>
+  <view class='m2Title'>你的考试预测得分</view>
+  <view class='dtl'>答题量</view>
+  <view class='sanimgbox'>
+    <view class='sanleft'>
+      <image src='../img/img2.jpg' mode='aspectFill' class='img2'></image>
+    </view>
+    <view class='foldingBoxMain'>
+      <view class='p1'></view>
+      <view class='p2'></view>
+      <view class='foldingBox'>
+        <view class='col'></view>
+        <view class='col'></view>
+        <view class='col'></view>
+        <view class='col'></view>
+        <view class='col'></view>
+        <view class='col'></view>
+        <view class='col'></view>
+        <view class='col'></view>
+        <view class='col'></view>
+        <view class='col'></view>
+        <view class='point' style='left:{{pointposition.x < 10 ? "4" : pointposition.x}}%;bottom:{{pointposition.y < 4 ? "4" : (pointposition.y > 98) ? "98" : pointposition.y}}%;'>
+          <view class='i'></view>
+          <view class='text {{(sanresults.y < 300) ? "smalltext" : ""}}'>
+            <view class='ft1'>预测分：{{filter.parseFloattwo(reportInfo.predicted,'0')}}分</view>
+            <view class='ft2'>({{filter.parseFloattwo(sanresults.y,'0')}},{{filter.parseFloattwo(sanresults.x*100,0)}}%)</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='sixbox'>
+    <view class='m2Title'>你的知识点掌握程度</view>
+    <view class='container magbt100'>
+      <view class='wubox'>
+        <view class='container'>
+          <canvas style="width: 200px; height: 200px;" canvas-id="firstCanvas"></canvas>
+        </view>
+        <text class='wutxt w1'>要求掌握的知识点</text>
+        <text class='wutxt w2'>要求运用的知识点</text>
+        <text class='wutxt w3'>要求理解的知识点</text>
+        <text class='wutxt w4'>要求识记的知识点</text>
+        <text class='wutxt w5'>要求了解的知识点</text>
+      </view>
+    </view>
+
+  </view>
+  <view class='tipsbox'>
+    <view class='tipTitle'>小学士提醒</view>
+    <view class='tipstxt'>根据你当前知识点掌握情况，在要求
+      <text wx:for="{{tipstxt}}" wx:key="{{index}}">"{{item == '3' ? '掌握' : item  == '4' ? '运用' : item == '0' ? '理解' : item == '1' ? '识记' : item == '2' ? '了解' : '' }}"</text>的知识点掌握程度有待提升！</view>
+    <view class='tipadd'>建议进行针对性练习！查漏补缺！</view>
+  </view>
+  <view class='testbox'>
+    <view class='tbt'>
+      <view class='fingers'></view>
+    </view>
+    <form bindsubmit="sjcjFun" report-submit='true' style='position:relative'>
+      <view class='testbtn'>随机出卷</view>
+      <button form-type="submit" type="default" plain="true" class='nonebtn'></button>
+    </form>
+  </view>
+  <view class='testPaper' wx:if="{{!islevelpaper}}">
+    <view class='tpleft'>
+      <view class='tpt1'>{{freepaper.paper_name}}</view>
+      <!-- <view class='tpt2'>1小时前</view> -->
+    </view>
+    <view class='tpright'>
+      <view class='tprbtn' bindtap='urlexercisesPaper'>开始测试</view>
+    </view>
+  </view>
+  <view class='testPaper' wx:for="{{levelpaperlist}}" wx:key="{{index}}" wx:if="{{(islevelpaper)}}">
+    <view class='tpleft'>
+      <view class='tpt1'>{{item.paper_name}}({{item.paper_no}})</view>
+      <view class='tpt2'>{{item.created_at}}</view>
+    </view>
+    <view class='tpright' bindtap='unLockFun' wx:if="{{item.is_unlock == '0'}}" data-id='{{item.id}}'>
+      <view class='tprbtn'>解锁学习</view>
+    </view>
+    <view class='tpright' bindtap='gotolevelexercises' wx:if="{{item.is_unlock == '1'}}" data-papername='{{item.paper_name}}' data-id='{{item.id}}'>
+      <view class='tprbtn'>立即学习</view>
+    </view>
+  </view>
+</view>
+<!-- 是否进行测试弹框 -->
+<cover-view class='boombox' wx:if="{{isshowboom}}">
+  <cover-view class='shadowbox' bindtap='hideBoom'></cover-view>
+  <cover-view class='textmain'>
+    <cover-image class='img3' src='../img/img3.png' mode='aspectFill'></cover-image>
+    <cover-view class='bT1'>先进行水平测试卷测试，</cover-view>
+    <cover-view class='bT1'>测测你的知识掌握程度吧！</cover-view>
+    <cover-view class='bT2'>是否马上进行测试？</cover-view>
+    <cover-view class='boombtonBox'>
+      <cover-view class='boombtn b1' bindtap='getlevelpaperFun'>是</cover-view>
+      <cover-view class='boombtn b2' bindtap='hideBoom'>否</cover-view>
+    </cover-view>
+  </cover-view>
+</cover-view>
+<!-- 用户首次进入是否获取数据报告，用户授权手机号 -->
+<view class='boombox' wx:if="{{getreport}}">
+  <view class='shadowbox' bindtap='cancalFun'></view>
+  <view class='textmain'>
+    <image class='img6' src='../img/img6.png' mode='aspectFill'></image>
+    <view class='bT3'>是否获取学习数据报告？</view>
+    <view class='boombtonBox'>
+      <view class='boombtn b2' bindtap='cancalFun'>取消</view>
+      <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='boombtn b1 sure'>确定</button>
+    </view>
+  </view>
+</view>
+<!-- 分享助力弹框 -->
+<cover-view class='boombox' wx:if="{{sharebox}}">
+  <cover-view class='shadowbox' bindtap='closeFun'></cover-view>
+  <cover-view class='sharemainbox'>
+    <cover-view class='sharechild'>
+      <cover-image src='../img/img7.png' mode='aspectFill' class='unclocktypeicon'></cover-image>
+      <cover-view class='sbT1'><button class='sharebtn sb1' open-type="share">分享好友助力</button></cover-view>
+      <cover-view class='sbT2'>当前已助力：{{setting.helped_number}}人</cover-view>
+      <cover-view class='sbT1'>分享成功助力{{setting.need_number}}人</cover-view>
+      <cover-view class='sbT1'>即可解锁</cover-view>
+    </cover-view>
+    <!-- <view class='sharechild'>
+      <image src='../img/img8.png' mode='aspectFill' class='unclocktypeicon'></image>
+      <view class='sharebtn sb2'>￥<text class='numt'>50</text></view>
+      <view class='sbT1'>付费50元</view>
+      <view class='sbT1'>即可解锁</view>
+    </view> -->
+  </cover-view>
+</cover-view>

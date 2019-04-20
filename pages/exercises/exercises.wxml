@@ -1,0 +1,166 @@
+<!--pages/shortAnswer/shortAnswer.wxml-->
+<!-- 错题本、章节练习 -->
+<view class='topNav' id="getnavheight">
+  <view class='tnLeft' wx:if="{{questionType == 'select'}}">单选题</view>
+  <view class='tnLeft' wx:if="{{questionType == 'shortanswer'}}">{{currentQuestion.question_type.type_name}}</view>
+  <view class='time' wx:if="{{testType == '2' || testType == '3'}}">交卷时间：2018/12/06 15:19</view>
+  <view class='questionIndex'>{{currentTab + 1}}/{{totalcount}}</view>
+</view>
+<swiper class="tab-content" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx; position:fixed;top:{{V1height}}px; bottom:{{V2height}}px;width:100%;">
+  <swiper-item wx:for="{{swiperarr}}" wx:key="{{index}}" bind:touchstart="handleTap1" bind:touchend="handleEnd">
+    <scroll-view scroll-y="true" class="scoll-h">
+      <view class="item-ans">
+        <view class='singelSelect' wx:if="{{questionType == 'select'}}">
+          <view class='singleTitle'>
+            <text class='selecttype'>(单选)</text>{{currentQuestion.title}}（
+            <text class='selectResults'>{{currentQuestion.userSelected == '0' ? 'A' : currentQuestion.userSelected  == '1' ? 'B' : currentQuestion.userSelected == '2' ? 'C' : currentQuestion.userSelected == '3' ? 'D' : ''}}</text>）</view>
+          <view class='selectbox'>
+            <view class='selectList {{((currentQuestion.userSelected || currentQuestion.userSelected ==0) && currentQuestion.correctAnswer == idx) ? "correct" : ""}} {{((currentQuestion.userSelected || currentQuestion.userSelected ==0) && (currentQuestion.userSelected == idx)) ? "wrong" : ""}}' bindtap='choiseFun' data-answerid='{{itemchild.id}}' data-question_id='{{currentQuestion.id}}' data-selectindex='{{idx}}' wx:for="{{currentQuestion.answers}}" wx:for-index="idx" wx:for-item="itemchild" wx:key="{{idx}}"><text class='selectIndex'>{{idx == '0' ? 'A' : idx  == '1' ? 'B' : idx == '2' ? 'C' : idx == '3' ? 'D' : ''}}</text>{{itemchild.option}}</view>
+            <!-- <view class='selectList wrong'>
+              <text class='selectIndex'>B</text>研究能力</view>
+            <view class='selectList correct'>
+              <text class='selectIndex'>C</text>研究能力</view>
+            <view class='selectList'>
+              <text class='selectIndex'>D</text>研究能力</view> -->
+          </view>
+        </view>
+        <!-- 简答题才显示的内容 -->
+        <view wx:if="{{questionType == 'shortanswer'}}">
+          <view class='samain'>
+            <view class='bgzl'>背景资料</view>
+            <view class='bgtext'>{{currentQuestion.question_content}}</view>
+          </view>
+          <view class='answerbtn' wx:if="{{!hadAnswer}}">
+            <view class='abchild' bindtap='showMeng'>开始作答</view>
+          </view>
+          <view class='yourAnswer' wx:if="{{hadAnswer && questionType == 'shortanswer'}}">
+            <view class='yaT1'>您的答案
+              <view class='changeya' bindtap='showMeng'>编辑答案</view>
+            </view>
+            <view class='yaList'>{{shortanswerText}}</view>
+          </view>
+        </view>
+        <view class='answercontent' wx:if="{{(currentQuestion.userSelected) || (currentQuestion.userSelected ==0) || (hadAnswer && questionType == 'shortanswer')}}">
+          <view class='anopenbtn {{isshowParsing ? "ai2" : "ai1"}}' bindtap='openParsing'>{{isshowParsing ? "收起答案与解析" : "展开答案与解析"}}</view>
+        </view>
+        <view wx:if="{{isshowParsing && ((currentQuestion.userSelected || currentQuestion.userSelected ==0) || (hadAnswer && questionType == 'shortanswer'))}}">
+          <view class='saMaincontent'>
+            <view class='correctAnswer' wx:if="{{questionType == 'select'}}">正确答案：
+              <text>{{currentQuestion.correctAnswer == '0' ? 'A' : currentQuestion.correctAnswer  == '1' ? 'B' : currentQuestion.correctAnswer == '2' ? 'C' : currentQuestion.correctAnswer == '3' ? 'D' : ''}}</text>
+            </view>
+            <view class='tipsbox' wx:if="{{questionType == 'shortanswer'}}">
+              <view class='tipTitle'>参考答案</view>
+              <view class='tipstxt'>{{currentQuestion.answer}}</view>
+            </view>
+          </view>
+          <view class='saMaincontent'>
+            <view class='tipsbox'>
+              <view class='tipTitle'>答案解析</view>
+              <view class='tipstxt'>{{currentQuestion.analyze || currentQuestion.analysis}}</view>
+            </view>
+          </view>
+          <view class='mainpointbox'>
+            <view class='mpT1'>要点</view>
+            <view class='mpbox1'>
+              <view class='mptitle1'>
+                <!-- <view class='h1T1' bindtap='slideDown'>
+                  <view class='h2icon {{h1isshow ? "i2" : "i1"}}'></view>{{itemchapters.chapter_name}}</view>
+                <view class='hierarchy3' wx:if="{{h1isshow}}"> -->
+                  <view class='h3nav' bindtap='openSummarybox' wx:for="{{currentQuestion.chapters}}"  wx:for-index="idxchapters" wx:for-item="itemchapters" wx:key="{{idxchapters}}" data-id='{{itemchapters.chapter_id}}'>
+                    <view class='h2T1'>
+                      <view class='h3icon'></view>{{itemchapters.chapter_name}}</view>
+                  </view>
+                  <!-- <view class='h3nav' bindtap='openSummarybox'>
+                    <view class='h2T1'>
+                      <view class='h3icon'></view>教师法法例法规</view>
+                  </view>
+                </view> -->
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+</swiper>
+
+<!-- 要点详情里的答题 -->
+<view wx:if="{{testType == '4'}}" class='shortAnswerFooter' id='getfooterheight'>
+  <!-- <view class='safChild'>
+    <view>
+      <view class='asficon a1'></view>
+      <view class='asfT'>从头开始</view>
+    </view>
+  </view> -->
+  <view class='safChild w100' bindtap='collectionFun'>
+    <view>
+      <view class='asficon {{currentQuestion.has_favorite == "0" ? "a22" : "a2"}}'></view>
+      <view class='asfT'>添加收藏</view>
+    </view>
+  </view>
+  <!-- <view class='safChild'>
+    <view>
+      <view class='asficon a4'></view>
+      <view class='asfT'>删除</view>
+    </view>
+  </view> -->
+</view>
+<!-- 模拟考试答题 -->
+<view wx:if="{{testType != '4' && wrongtype == ''}}" class='shortAnswerFooter' id='getfooterheight'>
+  <view class='safChild' bindtap='urlsheet'>
+    <view>
+      <view class='asficon a3'></view>
+      <view class='asfT'>答题卡</view>
+    </view>
+  </view>
+  <!-- <view class='safChild'>
+    <view>
+      <view class='timing'>{{time}}</view>
+      <view class='asfT'>计时</view>
+    </view>
+  </view> -->
+  <view class='safChild' bindtap='collectionFun'>
+    <view>
+      <view class='asficon {{currentQuestion.has_favorite == "0" ? "a22" : "a2"}}'></view>
+      <view class='asfT'>添加收藏</view>
+    </view>
+  </view>
+</view>
+<!-- 错题本进来 -->
+<view wx:if="{{wrongtype != ''}}" class='shortAnswerFooter' id='getfooterheight'>
+  <view class='safChild' bindtap='beginFun'>
+    <view>
+      <view class='asficon a1'></view>
+      <view class='asfT'>从头开始</view>
+    </view>
+  </view>
+  <view class='safChild' bindtap='collectionFun'>
+    <view>
+      <view class='asficon {{currentQuestion.has_favorite == "0" ? "a22" : "a2"}}'></view>
+      <view class='asfT'>添加收藏</view>
+    </view>
+  </view>
+  <view class='safChild' bindtap='delectWrongFun'>
+    <view>
+      <view class='asficon a4'></view>
+      <view class='asfT'>删除</view>
+    </view>
+  </view>
+</view>
+
+<view class='textareaAnswerbox {{aniStyle?"slideup":"slidedown"}}' wx:if="{{mengShow && questionType == 'shortanswer'}}">
+<form bindsubmit="bindFormSubmit">
+  <view class='textareaMain'>
+    <view class='tmIcon'></view>
+    <view class='question'>
+      <text></text>{{currentQuestion.title}}</view>
+    <textarea name="textarea" maxlength="-1" class='tamain' placeholder='请输入您的答案内容......' value="{{shortanswerText}}"></textarea>
+  </view>
+  <view class='tabottom'>
+    <view class='tachild' bindtap='outbtn'>取消</view>
+    <button form-type="submit" class='tachild' plain='true'>提交答案</button>
+    <!-- <view class='tachild'>提交答案</view> -->
+  </view>
+</form>
+</view>
+<view class='emptybox12'></view>

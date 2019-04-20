@@ -1,0 +1,142 @@
+/* pages/sheet/sheet.wxss */
+page{
+  background: #f9fafc;
+}
+.sheetNav{
+  font-size: 26rpx;
+  color: #333;
+  background: #fff;
+  padding: 25rpx 5%;
+  box-sizing: border-box;
+}
+.sheetNav text{
+  margin-left: 25rpx;
+}
+.sheetcontent{
+  padding: 60rpx 8%;
+  box-sizing: border-box;
+}
+.topicName{
+  font-size: 30rpx;
+  color: #333;
+}
+.topicbox{
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.topicchild{
+  display: inline-block;
+  width: 84rpx;
+  height: 84rpx;
+  border: 1rpx solid #ccc;
+  font-size: 36rpx;
+  color: #666;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 84rpx;
+  background: #fff;
+  margin: 18rpx;
+}
+.hasdone{
+  background: #fbc93d;
+  color: #fff;
+  border: 1rpx solid #fbc93d;
+}
+.topicType{
+  padding-bottom: 40rpx;
+}
+.topicType:last-child{
+  padding-bottom: 80rpx;
+}
+.theirPapers{
+  background: #fbc93d;
+  font-size: 32rpx;
+  color: #fff;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.surecontent{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9;
+}
+.suremain{
+  background: #fff;
+  border-radius: 25rpx;
+  padding: 30rpx 20rpx 25rpx;
+  box-sizing: border-box;
+  text-align: center;
+  width: 85%;
+}
+.img4{
+  display: inline-block;
+  width: 263rpx;
+  height: 235rpx;
+}
+.sT1{
+  font-size: 30rpx;
+  color: #333;
+  text-align: center;
+}
+.sT2{
+  font-size: 38rpx;
+  color: #ff9900;
+  text-align: center;
+  font-weight: bold;
+  padding: 12rpx 0;
+}
+.sT3{
+  font-size: 24rpx;
+  color: #666;
+  text-align: center;
+}
+.btnbox{
+  display: flex;
+  display: -webkit-flex;
+  padding: 40rpx 5% 10rpx;
+  box-sizing: border-box;
+}
+.cancal,.determine{
+  width: 45%;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 100rpx;
+}
+.cancal{
+  background: #d5d5d5;
+  margin-right: 5%;
+}
+.determine{
+  background: #ff9900;
+  margin-left: 10%;
+}
+.wrong{
+  background: #ff5a00;
+  color: #fff;
+  border: 1rpx solid #ff5a00;
+}
+.correct{
+  background: #09c405;
+  color: #fff;
+  border: 1rpx solid #09c405;
+}

@@ -1,0 +1,7 @@
+<!--pages/wrongTopic/wrongTopic.wxml-->
+<view class='bannerbox'>选择错题类型</view>
+<view class='wrongbox'>
+  <view class='wronglist i1' bindtap='urlwrongTopicList' data-type='1' data-count='{{summary.exercise}}'>章节练习题（<text>{{summary.exercise}}</text>道）</view>
+  <view class='wronglist i2' bindtap='urlwrongTopicList' data-type='2' data-count='{{summary.paper}}'>历年真题（<text>{{summary.paper}}</text>道）</view>
+  <view class='wronglist i3' bindtap='urlwrongTopicList' data-type='3' data-count='{{summary.mock}}'>模拟考试（<text>{{summary.mock}}</text>道）</view>
+</view>

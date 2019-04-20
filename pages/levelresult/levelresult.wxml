@@ -1,0 +1,52 @@
+<!--pages/resultsStatistical/resultsStatistical.wxml-->
+<wxs module="filter" src="../../utils/countdown.wxs"></wxs>
+<view class='headerbox'>
+  <view class='headerchild'>
+    <view class='hcT1'>{{papertitle}}</view>
+    <view class='hcT1'>交卷时间<text>{{result.finish_date}}</text></view>
+    <view class='practice' bindtap='urlBack'>返回学习数据页</view>
+  </view>
+  <view class='headerchild1'>
+    <view class='progress_box studyRight'>
+        <!-- 绘制圆环背景 -->
+        <canvas class="progress_bg" canvas-id="canvasProgressbg" />
+        <!-- 绘制加载中圆弧 -->
+        <canvas class="progress_canvas" canvas-id="canvasProgress" /> 
+        <!-- 绘制圆弧中心提示文字 -->
+        <view class="progress_text">
+          <view>
+            <view class='progress_info'>{{filter.parseFloattwo(progress_txt,'0')}}%</view>
+            <view class='piT'>正确率</view>
+          </view>
+        </view>
+      </view>
+  </view>
+</view>
+<view class='resultsmainbox'>
+  <view class='rmchild1'>
+    <image src='../img/img5.png' mode='aspectFill' class='efforts'></image>
+    <view class='rmcT1'>不要灰心，好好学习，再来挑战！</view>
+    <view class='graybox'>
+      <view class='graychild'>
+        <view class='gcT1'><text>{{result.correct}}/</text>{{result.total}}</view>
+        <view class='gcT2 b1'>答对</view>
+      </view>
+      <view class='graychild'>
+        <view class='gcT1'><text>{{result.cost_time}}</text>Min</view>
+        <view class='gcT2 b2'>用时</view>
+      </view>
+    </view>
+  </view>
+  <view class='rmchild2'>
+    <view class='rmcT3'>选择题</view>
+    <view class='exercisesbox'>
+      <view class='exercises {{item.correct != null ? "hasdone" : ""}} {{(item.correct == "1" || item.correct == null) ? "" : "hasdone1"}}' wx:for="{{levelsheetList}}" wx:key="{{index}}">{{index + 1}}</view>
+      <!-- <view class='exercises'>1</view>
+      <view class='exercises'>1</view>
+      <view class='exercises'>1</view>
+      <view class='exercises'>1</view>
+      <view class='exercises'>12</view> -->
+    </view>
+  </view>
+
+</view>

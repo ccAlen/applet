@@ -1,0 +1,29 @@
+/* pages/memoryCard/memoryCard.wxss */
+.memoryimg{
+  display: inline-block;
+  width: 540rpx;
+  /* height: 848rpx; */
+  margin-top: 60rpx;
+}
+.saveimg{
+  display: inline-block;
+  width: 70%;
+  height: 94rpx;
+  background: #fbc93d;
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 20rpx;
+  margin: 50rpx 15%;
+  line-height: 94rpx;
+  text-align: center;
+}
+.memoryCard {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+} 
+.centerbox{
+  text-align: center;
+}

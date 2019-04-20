@@ -1,0 +1,2 @@
+/* pages/memo/memo.wxss */
+@import "../chapterLists/chapterLists"

@@ -1,0 +1,21 @@
+<!--pages/editInformation/editInformation.wxml-->
+<view class='infolist'>
+  <view class='infoleft'>头像</view>
+  <view class='inforight' bindtap='changeAvatar'><image src='{{userInfo.avatar}}' class='headerimg' mode='aspectFill'></image></view>
+</view>
+<view class='infolist list1'>
+  <view class='infoleft'>昵称</view>
+  <view class='inforight'><input class='rightinp' placeholder='请输入昵称' value='{{userInfo.name}}' bindblur='changeName' ></input></view>
+</view>
+<view class='infolist list1'>
+  <view class='infoleft'>姓名</view>
+  <view class='inforight'><input class='rightinp' placeholder='请输入真实姓名' value='{{userInfo.real_name}}' bindblur='changeRealName'></input></view>
+</view>
+<view class='infolist list1'>
+  <view class='infoleft'>手机号</view>
+  <view class='inforight'><input class='rightinp' placeholder='请输入手机号' value='{{userInfo.mobile}}' bindblur='changePhone'></input></view>
+</view>
+<view class='infolist1'>
+  <view class='infoleft'>备考格言</view>
+  <view class='inforight'><input class='rightinp' placeholder='请输入你的备考格言（最长字数：8）' maxlength='8' value='{{userInfo.motto}}' bindblur='changeMotto'></input></view>
+</view>

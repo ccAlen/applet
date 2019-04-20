@@ -1,0 +1,43 @@
+<!--pages/sheet/sheet.wxml-->
+<!-- <view class='sheetNav'>章节练习<text>第一章</text><text>职业理念</text></view> -->
+<view class='sheetNav'>{{paperInfo.name || chapterInfo.name || levelpapertitle}}</view>
+<view class='sheetcontent'>
+  <view class='topicType'>
+    <view class='topicName'>选择题</view>
+    <view class='topicbox'>
+      <!-- <view class='topicchild hasdone'>1</view> -->
+      <view wx:if="{{!islevelpaper}}" class='topicchild {{item.haddone == "1" ? "hasdone" : ""}} {{(!ispaper && item.isCorrect == "0") ? "wrong" : ""}} {{(!ispaper && item.isCorrect == "1") ? "correct" : ""}}' wx:for="{{sheetList.choice}}" wx:key="{{index}}">{{index + 1}}</view>
+      <view wx:if="{{islevelpaper}}" class='topicchild {{item.answer != null ? "hasdone" : ""}} {{(!ispaper && item.correct == "0") ? "wrong" : ""}}' wx:for="{{levelsheetList}}" wx:key="{{index}}">{{item.paper_sort || item.question_sort || index+1}}</view>
+      <!-- <view class='topicchild'>3</view>
+      <view class='topicchild'>4</view>
+      <view class='topicchild'>5</view>
+      <view class='topicchild'>6</view>
+      <view class='topicchild'>7</view>
+      <view class='topicchild'>8</view>
+      <view class='topicchild'>9</view>
+      <view class='topicchild'>10</view>
+      <view class='topicchild'>11</view>
+      <view class='topicchild'>12</view> -->
+    </view>
+  </view>
+  <view class='topicType' wx:if="{{!islevelpaper}}">
+    <view class='topicName'>非选择题</view>
+    <view class='topicbox'>
+      <view class='topicchild {{item.haddone == "1" ? "hasdone" : ""}} {{item.isCorrect == "0" ? "wrong" : ""}}' wx:for="{{sheetList.question}}" wx:key="{{index}}">{{item.paper_sort || item.question_sort || index + 1}}</view>
+    </view>
+  </view>
+  
+</view>
+<view class='theirPapers' bindtap='theirPapersFun' wx:if="{{testType != '1'}}">交卷查看结果</view>
+<view class='surecontent' wx:if="{{showbox}}">
+  <view class='suremain'>
+    <image class='img4' src='../img/img4.png' mode='aspectFill'></image>
+    <view class='sT1'>您还有题目未作答</view>
+    <view class='sT2'>确定交卷吗？</view>
+    <view class='sT3'>离成功只差一步，坚持一下！</view>
+    <view class='btnbox'>
+      <view class='cancal' bindtap='cancalFun'>取消</view>
+      <view class='determine' bindtap="urlresultsStatistical">确认</view>
+    </view>
+  </view>
+</view>

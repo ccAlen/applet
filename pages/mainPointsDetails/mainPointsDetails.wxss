@@ -1,0 +1,150 @@
+/* pages/mainPointsDetails/mainPointsDetails.wxss */
+page{
+  background: #f9fafc;
+  padding: 25rpx 10rpx;
+  box-sizing: border-box;
+}
+.tab-h {
+  height: 80rpx;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  line-height: 80rpx;
+  background: #f7f7f7;
+  font-size: 16px;
+  white-space: nowrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
+.tab-item {
+  margin: 0 36rpx;
+  display: inline-block;
+}
+
+.tab-item.active {
+  color: #4675f9;
+  position: relative;
+}
+
+.tab-item.active:after {
+  content: "";
+  display: block;
+  height: 8rpx;
+  width: 52rpx;
+  background: #4675f9;
+  position: absolute;
+  bottom: 0;
+  left: 5rpx;
+  border-radius: 16rpx;
+}
+.scoll-h {
+  height: 100%;
+}
+.item-ans{
+  border:1px solid #fbd56b;
+  border-radius: 25rpx;
+  background: #fff;
+}
+.pageindexbox{
+  padding: 100rpx 5%;
+  box-sizing: border-box;
+  text-align: right;
+}
+.pichild{
+  display: inline-block;
+  padding: 20rpx 60rpx;
+  background: #ff9900;
+  font-size: 24rpx;
+  color: #fff;
+  border-radius: 100rpx;
+}
+.kwT1{
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #ff9900;
+  padding: 30rpx 0;
+}
+.keywordbox{
+  padding: 60rpx 4%;
+  box-sizing: border-box;
+}
+.keychild{
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  justify-content:flex-start;
+}
+.keyword{
+  background: #fff2c9;
+  font-size: 24rpx;
+  color: #333;
+  padding: 15rpx 30rpx;
+  margin-bottom: 25rpx;
+  margin-right: 25rpx;
+  min-width: 120rpx;
+}
+.mainPointFooter{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 240rpx;
+  display: flex;
+  display: -webkit-flex;
+  background: #f9fafc;
+  padding: 0 6%;
+  box-sizing: border-box;
+}
+.mpfChild{
+  width: 30%;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.mpfChild1{
+  width: 40%;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.remember{
+  font-size: 26rpx;
+  background: #fbc93d;
+  color: #fff;
+  height: 125rpx;
+  width: 125rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 125rpx;
+}
+.remember1{
+  font-size: 30rpx;
+  background: #fbc93d;
+  color: #fff;
+  height: 170rpx;
+  width: 170rpx;
+  border-radius: 50%;
+  border: 10rpx solid #ffeec0;
+  text-align: center;
+  line-height: 170rpx;
+}
+.orange{
+  background: #ff9900;
+}
+.empbox{
+  height: 240rpx;
+}
+.chapterName{
+  font-size: 30rpx;
+  color: #333;
+  padding: 40rpx 4%;
+  box-sizing: border-box;
+  font-weight: bold;
+}
